@@ -1,0 +1,21 @@
+apply from: "../module.gradle"
+
+android {
+    if (isModule.toBoolean()) {
+        //独立模块，则配置applicationId
+        applicationId "com.wonly.intellect.user"
+    }
+    //统一资源前缀,规范资源引用,避免资源冲突
+    resourcePrefix "user_"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["constraint-layout"]
+    //test
+    testImplementation rootProject.ext.dependencies["junit"]
+    debugImplementation rootProject.ext.dependencies["canary-debug"]
+    releaseImplementation rootProject.ext.dependencies["canary-release"]
+    testImplementation rootProject.ext.dependencies["canary-release"]
+}
