@@ -2,6 +2,7 @@ package com.wonly.lib_base.utils;
 
 import android.app.Application;
 
+import com.orhanobut.logger.Logger;
 import com.wonly.lib_base.base.IInitModuleInApplication;
 
 /**
@@ -16,7 +17,9 @@ public class ModuleManagerUtils {
 
     private static final String[] mModuleName = {
             "com.wonly.lib_base.application.InitBaseModule",
-            "",
+            "com.wonly.module_home.application.InitHomeModule",
+            "com.wonly.module_main.application.InitMainModule",
+            "com.wonly.module_user.application.InitUserModule"
     };
 
     /**
@@ -48,11 +51,11 @@ public class ModuleManagerUtils {
                 IInitModuleInApplication newInstance = (IInitModuleInApplication) clazz.newInstance();
                 newInstance.initModule(application);
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                Logger.e(e.getMessage());
             } catch (InstantiationException e) {
-                e.printStackTrace();
+                Logger.e(e.getMessage());
             } catch (IllegalAccessException e) {
-                e.printStackTrace();
+                Logger.e(e.getMessage());
             }
         }
     }

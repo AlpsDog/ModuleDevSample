@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--影响到rv sv滚动到尽头时，拖拽阴影的颜色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--以下有待于研究-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="defaultTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:screenOrientation">portrait</item>
+    </style>
+
+    <!--启动页面Theme-->
+    <style name="SplashTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <!--<item name="android:windowBackground">@drawable/layer_splash_bg</item>-->
+    </style>
+
+    <!--引导页Theme-->
+    <style name="GuideTheme" parent="@android:style/Theme.NoTitleBar.Fullscreen">
+        <!--Customize your theme here.-->
+    </style>
+
+</resources>

@@ -2,6 +2,7 @@ package com.wonly.module_main.application;
 
 import android.app.Application;
 
+import com.orhanobut.logger.Logger;
 import com.wonly.lib_base.base.IInitModuleInApplication;
 import com.wonly.lib_base.utils.ModuleManagerUtils;
 
@@ -22,6 +23,6 @@ public class InitMainModule implements IInitModuleInApplication {
      */
     @Override
     public void initModule(Application application) {
-
+        Logger.d("InitMainModule: " + application);
     }
 }

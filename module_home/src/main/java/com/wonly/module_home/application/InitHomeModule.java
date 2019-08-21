@@ -2,8 +2,10 @@ package com.wonly.module_home.application;
 
 import android.app.Application;
 
+import com.orhanobut.logger.Logger;
 import com.wonly.lib_base.base.IInitModuleInApplication;
 import com.wonly.lib_base.utils.ModuleManagerUtils;
+
 /**
  * @Author: HSL
  * @Time: 2019/8/20 15:58
@@ -19,6 +21,6 @@ public class InitHomeModule implements IInitModuleInApplication {
      */
     @Override
     public void initModule(Application application) {
-
+        Logger.d("InitHomeModule: " + application);
     }
 }
