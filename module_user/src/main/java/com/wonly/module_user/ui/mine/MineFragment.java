@@ -2,11 +2,13 @@ package com.wonly.module_user.ui.mine;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.wonly.lib_base.base.BaseFragment;
+import com.wonly.lib_common.router.UserPath;
 import com.wonly.module_user.R;
 
 /**
@@ -15,7 +17,8 @@ import com.wonly.module_user.R;
  * @E-mail: xxx@163.com
  * @Description: 我的~
  */
-public class MineFragment extends Fragment {
+@Route(path = UserPath.FRAG_USER_HOME)
+public class MineFragment extends BaseFragment {
 
 
     public MineFragment() {

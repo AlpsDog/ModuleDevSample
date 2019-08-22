@@ -1,8 +1,8 @@
 package com.wonly.module_home.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
+import com.wonly.lib_base.base.BaseActivity;
 import com.wonly.module_home.R;
 import com.wonly.module_home.ui.home.HomeFragment;
 
@@ -12,7 +12,7 @@ import com.wonly.module_home.ui.home.HomeFragment;
  * @E-mail: xxx@163.com
  * @Description: 独立模块时，启动界面~
  */
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

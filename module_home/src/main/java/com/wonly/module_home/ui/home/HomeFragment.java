@@ -2,11 +2,13 @@ package com.wonly.module_home.ui.home;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.wonly.lib_base.base.BaseFragment;
+import com.wonly.lib_common.router.HomePath;
 import com.wonly.module_home.R;
 
 /**
@@ -15,7 +17,8 @@ import com.wonly.module_home.R;
  * @E-mail: xxx@163.com
  * @Description: 首页~
  */
-public class HomeFragment extends Fragment {
+@Route(path = HomePath.FRAG_HOME_HOME)
+public class HomeFragment extends BaseFragment {
 
     public static HomeFragment newInstance() {
         Bundle args = new Bundle();

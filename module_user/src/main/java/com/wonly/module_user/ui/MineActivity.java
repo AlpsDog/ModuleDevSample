@@ -1,8 +1,8 @@
 package com.wonly.module_user.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
+import com.wonly.lib_base.base.BaseActivity;
 import com.wonly.module_user.R;
 import com.wonly.module_user.ui.mine.MineFragment;
 
@@ -12,7 +12,7 @@ import com.wonly.module_user.ui.mine.MineFragment;
  * @E-mail: xxx@163.com
  * @Description: 这个人太懒，没留下什么踪迹~
  */
-public class MineActivity extends AppCompatActivity {
+public class MineActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

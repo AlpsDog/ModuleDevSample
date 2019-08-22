@@ -3,12 +3,13 @@ package com.wonly.lib_base.application;
 import android.app.Application;
 import android.support.annotation.Nullable;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.BuildConfig;
 import com.orhanobut.logger.DiskLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
+import com.wonly.lib_base.BuildConfig;
 import com.wonly.lib_base.base.IInitModuleInApplication;
 import com.wonly.lib_base.utils.ModuleManagerUtils;
 
@@ -29,8 +30,22 @@ public class InitBaseModule implements IInitModuleInApplication {
      */
     @Override
     public void initModule(Application application) {
+        initARouter(application);
         initLogger();
         Logger.d("InitBaseModule：" + application);
+    }
+
+    /**
+     * 初始化阿里ARouter
+     *
+     * @param application
+     */
+    private void initARouter(Application application) {
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog();
+            ARouter.openDebug();
+        }
+        ARouter.init(application);
     }
 
     /**
