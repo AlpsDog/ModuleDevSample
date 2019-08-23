@@ -4,10 +4,9 @@ package com.wonly.intellect.ui.launch;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.wonly.intellect.R;
+import com.wonly.intellect.ui.main.MainActivity;
 import com.wonly.lib_base.base.BaseActivity;
-import com.wonly.lib_common.router.MainPath;
 
 /**
  * @Author: HSL
@@ -22,7 +21,7 @@ public class LaunchActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
         new Handler().postDelayed(() -> {
-            ARouter.getInstance().build(MainPath.ACT_MAIN_MAIN).navigation();
+            MainActivity.start(LaunchActivity.this);
         }, 3000);
     }
 }

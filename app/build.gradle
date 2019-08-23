@@ -64,7 +64,6 @@ dependencies {
     annotationProcessor  rootProject.ext.dependencies["arouter-compiler"]
     //模块依赖
     if (!isModule.toBoolean()) {
-        implementation project(path: ':module_main')
         implementation project(path: ':module_user')
         implementation project(path: ':module_home')
     }

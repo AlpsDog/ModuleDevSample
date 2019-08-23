@@ -18,7 +18,6 @@ public class ModuleManagerUtils {
     private static final String[] mModuleName = {
             "com.wonly.lib_base.application.InitBaseModule",
             "com.wonly.module_home.application.InitHomeModule",
-            "com.wonly.module_main.application.InitMainModule",
             "com.wonly.module_user.application.InitUserModule"
     };
 

@@ -1,4 +1,4 @@
-package com.wonly.module_main.widget;
+package com.wonly.intellect.widget;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -15,11 +15,12 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.wonly.intellect.R;
+import com.wonly.intellect.databinding.MergeMainTabBinding;
+import com.wonly.intellect.ui.main.DefaultMainFragment;
 import com.wonly.lib_base.utils.SPUtils;
 import com.wonly.lib_common.router.HomePath;
 import com.wonly.lib_common.router.UserPath;
-import com.wonly.module_main.R;
-import com.wonly.module_main.databinding.MainMergeMainTabBinding;
 
 /**
  * @Project: ModuleDevSample
@@ -35,7 +36,7 @@ public class MainTabLayout extends LinearLayout {
     public static final int MINE_TAB_INDEX = 1;
     public static final String CURRENT_TAB_INDEX = "current_tab_index";
 
-    private MainMergeMainTabBinding mTabBinding;
+    private MergeMainTabBinding mTabBinding;
     private FragmentManager mFragmentManager;
     private FragmentTransaction mFragmentTransaction;
     private Fragment mCurrentFragment;
@@ -54,7 +55,7 @@ public class MainTabLayout extends LinearLayout {
 
     public MainTabLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mTabBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.main_merge_main_tab, this, true);
+        mTabBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.merge_main_tab, this, true);
         mTabBinding.homeTabLl.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +84,10 @@ public class MainTabLayout extends LinearLayout {
         if (mHomeFragment == null) {
             mHomeFragment = (Fragment) ARouter.getInstance().build(HomePath.FRAG_HOME_HOME).navigation();
         }
+        if (mHomeFragment == null) {
+            //防止模块化切换时，为Null
+            mHomeFragment = DefaultMainFragment.newInstance("首页");
+        }
         showHideFragment(mHomeFragment, HOME_TAB_INDEX);
         mCurrentTabIndex = HOME_TAB_INDEX;
         mCurrentFragment = mHomeFragment;
@@ -102,6 +107,9 @@ public class MainTabLayout extends LinearLayout {
         if (mMineFragment == null) {
             //ARouter获取用户模块下的Fragment
             mMineFragment = (Fragment) ARouter.getInstance().build(UserPath.FRAG_USER_HOME).navigation();
+        }
+        if (mMineFragment == null) {
+            mMineFragment = DefaultMainFragment.newInstance("我的");
         }
         showHideFragment(mMineFragment, MINE_TAB_INDEX);
         mCurrentTabIndex = MINE_TAB_INDEX;

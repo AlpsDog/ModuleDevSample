@@ -1,13 +1,13 @@
-package com.wonly.module_main.ui;
+package com.wonly.intellect.ui.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
+import com.wonly.intellect.R;
+import com.wonly.intellect.databinding.ActivityMainBinding;
 import com.wonly.lib_base.base.BaseActivity;
-import com.wonly.lib_common.router.MainPath;
-import com.wonly.module_main.R;
-import com.wonly.module_main.databinding.MainActivityMainBinding;
 
 /**
  * @Author: HSL
@@ -15,15 +15,19 @@ import com.wonly.module_main.databinding.MainActivityMainBinding;
  * @E-mail: xxx@163.com
  * @Description: 应用主页~
  */
-@Route(path = MainPath.ACT_MAIN_MAIN)
 public class MainActivity extends BaseActivity {
 
-    private MainActivityMainBinding mMainBinding;
+    private ActivityMainBinding mMainBinding;
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, MainActivity.class);
+        context.startActivity(starter);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMainBinding = DataBindingUtil.setContentView(this, R.layout.main_activity_main);
+        mMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mMainBinding.mainTab.initFragment(savedInstanceState);
     }
 

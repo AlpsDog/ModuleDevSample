@@ -14,7 +14,7 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <com.wonly.module_main.widget.MainTabLayout
+        <com.wonly.intellect.widget.MainTabLayout
             android:id="@+id/main_tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
