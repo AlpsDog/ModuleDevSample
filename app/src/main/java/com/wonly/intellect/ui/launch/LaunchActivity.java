@@ -3,8 +3,10 @@ package com.wonly.intellect.ui.launch;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 
 import com.wonly.intellect.R;
+import com.wonly.intellect.databinding.ActivityLaunchBinding;
 import com.wonly.intellect.ui.main.MainActivity;
 import com.wonly.lib_base.base.BaseActivity;
 
@@ -14,14 +16,25 @@ import com.wonly.lib_base.base.BaseActivity;
  * @E-mail: xxx@163.com
  * @Description: 启动页~
  */
-public class LaunchActivity extends BaseActivity {
+public class LaunchActivity extends BaseActivity<ActivityLaunchBinding> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_launch);
-        new Handler().postDelayed(() -> {
-            MainActivity.start(LaunchActivity.this);
-        }, 3000);
+    protected int onLayoutResID(@Nullable Bundle savedInstanceState) {
+        return R.layout.activity_launch;
+    }
+
+    @Override
+    protected void initView(Bundle savedInstanceState) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                MainActivity.start(mActivity);
+            }
+        }, 2000);
+    }
+
+    @Override
+    protected void initData(Bundle savedInstanceState) {
+
     }
 }

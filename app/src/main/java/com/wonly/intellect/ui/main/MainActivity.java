@@ -2,12 +2,17 @@ package com.wonly.intellect.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.wonly.intellect.R;
 import com.wonly.intellect.databinding.ActivityMainBinding;
-import com.wonly.lib_base.base.BaseActivity;
+import com.wonly.lib_base.base.BaseMVPActivity;
+import com.wonly.lib_common.event.MainEvent;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * @Author: HSL
@@ -15,9 +20,7 @@ import com.wonly.lib_base.base.BaseActivity;
  * @E-mail: xxx@163.com
  * @Description: 应用主页~
  */
-public class MainActivity extends BaseActivity {
-
-    private ActivityMainBinding mMainBinding;
+public class MainActivity extends BaseMVPActivity<ActivityMainBinding, MainPresenter> {
 
     public static void start(Context context) {
         Intent starter = new Intent(context, MainActivity.class);
@@ -25,15 +28,57 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mMainBinding.mainTab.initFragment(savedInstanceState);
+    protected int onLayoutResID(@Nullable Bundle savedInstanceState) {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected MainPresenter onCreatePresenter() {
+        return new MainPresenter();
+    }
+
+    /**
+     * 使用EventBus
+     *
+     * @return
+     */
+    @Override
+    protected boolean useEventBus() {
+        return true;
+    }
+
+    /**
+     * EventBus消息处理
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void mainTabEvent(MainEvent event) {
+        Toast.makeText(mActivity, "App模块弹出：" + event, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 主页Event，处理粘性事件
+     *
+     * @param event
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void mainStickyEvent(MainEvent event) {
+        // TODO: 2019/8/27  
+    }
+
+
+    @Override
+    protected void initView(Bundle savedInstanceState) {
+        mBinding.mainTab.initFragment(savedInstanceState);
+    }
+
+    @Override
+    protected void initData(Bundle savedInstanceState) {
+
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        mMainBinding.mainTab.saveCurrentTabIndex();
+        mBinding.mainTab.saveCurrentTabIndex();
     }
 }

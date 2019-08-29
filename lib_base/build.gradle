@@ -17,6 +17,10 @@ android {
         targetCompatibility = 1.8
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
         debug {
             buildConfigField "boolean", "LOG_DEBUG", "true"
@@ -41,4 +45,5 @@ dependencies {
     api rootProject.ext.dependencies["appcompat-v7"]
     api rootProject.ext.dependencies["constraint-layout"]
     api rootProject.ext.dependencies["arouter"]
+    api rootProject.ext.dependencies["eventbus"]
 }

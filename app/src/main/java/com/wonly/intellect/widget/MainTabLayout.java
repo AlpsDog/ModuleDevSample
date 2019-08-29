@@ -21,6 +21,7 @@ import com.wonly.intellect.ui.main.DefaultMainFragment;
 import com.wonly.lib_base.utils.SPUtils;
 import com.wonly.lib_common.router.HomePath;
 import com.wonly.lib_common.router.UserPath;
+import com.wonly.lib_common.service.IHomeModuleService;
 
 /**
  * @Project: ModuleDevSample
@@ -77,6 +78,10 @@ public class MainTabLayout extends LinearLayout {
     public void onTabHomeClick() {
         if (mCurrentTabIndex == HOME_TAB_INDEX) {
             //避免重复点击，可以做一些其他操作
+            IHomeModuleService moduleService = ARouter.getInstance().navigation(IHomeModuleService.class);
+            if (moduleService != null) {
+                moduleService.refreshHomeFragment("来自首页刷新!");
+            }
             return;
         }
         switchStatusBarColor(HOME_TAB_INDEX);

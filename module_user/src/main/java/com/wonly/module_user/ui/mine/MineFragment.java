@@ -2,14 +2,19 @@ package com.wonly.module_user.ui.mine;
 
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.wonly.lib_base.base.BaseFragment;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.wonly.lib_base.base.BaseMVPFragment;
+import com.wonly.lib_common.event.MainEvent;
 import com.wonly.lib_common.router.UserPath;
+import com.wonly.lib_common.service.IHomeModuleService;
 import com.wonly.module_user.R;
+import com.wonly.module_user.databinding.UserFragmentMineBinding;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * @Author: HSL
@@ -18,8 +23,7 @@ import com.wonly.module_user.R;
  * @Description: 我的~
  */
 @Route(path = UserPath.FRAG_USER_HOME)
-public class MineFragment extends BaseFragment {
-
+public class MineFragment extends BaseMVPFragment<UserFragmentMineBinding, MinePresenter> {
 
     public MineFragment() {
         // Required empty public constructor
@@ -32,12 +36,40 @@ public class MineFragment extends BaseFragment {
         return fragment;
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.user_fragment_mine, container, false);
+    protected int onLayoutResID(@Nullable Bundle savedInstanceState) {
+        return R.layout.user_fragment_mine;
     }
 
+    @Override
+    protected MinePresenter onCreatePresenter() {
+        return new MinePresenter();
+    }
+
+    @Override
+    protected void initView(@Nullable Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    protected void initData(@Nullable Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    protected void initListener() {
+        mBinding.testTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainEvent<String> mainEvent = new MainEvent<>();
+                mainEvent.setData("来自用户模块的Event");
+                EventBus.getDefault().post(mainEvent);
+
+                IHomeModuleService moduleService = ARouter.getInstance().navigation(IHomeModuleService.class);
+                if (moduleService != null) {
+                    moduleService.refreshHomeFragment("来自用户刷新!");
+                }
+            }
+        });
+    }
 }

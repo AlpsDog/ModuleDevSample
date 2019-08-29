@@ -9,6 +9,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:background="?android:attr/selectableItemBackground"
             android:orientation="vertical">
 
             <ImageView
@@ -33,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:background="?android:attr/selectableItemBackground"
             android:orientation="vertical">
 
             <ImageView
