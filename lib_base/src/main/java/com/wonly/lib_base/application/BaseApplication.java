@@ -12,14 +12,14 @@ import android.content.res.Resources;
  */
 public abstract class BaseApplication extends RegisterActivityLifeContext {
 
-    private static Application instance;
+    private static BaseApplication instance;
 
     /**
      * 获取全局上下文
      *
      * @return
      */
-    public static Application getInstance() {
+    public static BaseApplication getInstance() {
         return instance;
     }
 
