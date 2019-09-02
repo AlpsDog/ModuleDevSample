@@ -51,6 +51,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //test
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation rootProject.ext.dependencies["junit"]
     debugImplementation rootProject.ext.dependencies["canary-debug"]
     releaseImplementation rootProject.ext.dependencies["canary-release"]
@@ -61,7 +62,7 @@ dependencies {
     implementation project(path: ':lib_base')
     implementation project(path: ':lib_res')
     implementation project(path: ':lib_common')
-    annotationProcessor  rootProject.ext.dependencies["arouter-compiler"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     //模块依赖
     if (!isModule.toBoolean()) {
         implementation project(path: ':module_user')

@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.wonly.intellect.R;
 import com.wonly.intellect.databinding.ActivityMainBinding;
-import com.wonly.lib_base.base.BaseMVPActivity;
+import com.wonly.lib_base.mvp.BaseMVPActivity;
 import com.wonly.lib_common.event.MainEvent;
 
 import org.greenrobot.eventbus.Subscribe;

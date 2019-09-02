@@ -1,10 +1,13 @@
-package com.wonly.lib_base.base;
+package com.wonly.lib_base.mvp;
 
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.View;
+
+import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.android.FragmentEvent;
+import com.wonly.lib_base.base.BaseActivity;
+import com.wonly.lib_base.base.BaseFragment;
 
 /**
  * @Author: HSL
@@ -13,8 +16,7 @@ import android.view.View;
  * @Description: 纯粹的 MVP 包装，不要增加任何View层基础功能
  * 如果要添加基类功能，请在{@link BaseActivity} 中添加
  */
-public abstract class BaseMVPFragment<V extends ViewDataBinding, P extends IBasePresenter>
-        extends BaseFragment<V> implements IBaseView {
+public abstract class BaseMVPFragment<V extends ViewDataBinding, P extends IBasePresenter> extends BaseFragment<V> implements IBaseView {
 
     protected P mPresenter;
 
@@ -40,5 +42,25 @@ public abstract class BaseMVPFragment<V extends ViewDataBinding, P extends IBase
      * @return
      */
     protected abstract P onCreatePresenter();
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showMsg(String msg) {
+
+    }
+
+    @Override
+    public <T> LifecycleTransformer<T> bindToLife() {
+        return bindUntilEvent(FragmentEvent.DESTROY);
+    }
 
 }

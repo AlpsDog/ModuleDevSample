@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.wonly.lib_base.base.BaseMVPFragment;
+import com.wonly.lib_base.mvp.BaseMVPFragment;
 import com.wonly.lib_common.router.HomePath;
 import com.wonly.module_home.R;
 import com.wonly.module_home.databinding.HomeFragmentHomeBinding;

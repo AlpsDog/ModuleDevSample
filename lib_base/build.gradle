@@ -48,4 +48,22 @@ dependencies {
     api rootProject.ext.dependencies["eventbus"]
     implementation rootProject.ext.dependencies["gson"]
     implementation rootProject.ext.dependencies["fastjson"]
+
+    //retrofit
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["okhttp3"]
+    api rootProject.ext.dependencies["retrofit-converter-gson"]
+    api rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
+    //RxJava2
+    api rootProject.ext.dependencies["rxjava2"]
+    api rootProject.ext.dependencies["rxandroid2"]
+    //RxLifecycle
+    api rootProject.ext.dependencies["rxlifecycle2"]
+    api rootProject.ext.dependencies["rxlifecycle2-components"]
+    //RxCache
+    implementation rootProject.ext.dependencies["rxcache2"]
+    implementation rootProject.ext.dependencies["rxcache-jolyglot-gson"]
+    //glide
+    api rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 }

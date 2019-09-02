@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+
 import org.greenrobot.eventbus.EventBus;
 
 /**
@@ -16,7 +18,7 @@ import org.greenrobot.eventbus.EventBus;
  * @E-mail: xxx@163.com
  * @Description: 基类Activity~
  */
-public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatActivity {
+public abstract class BaseActivity<V extends ViewDataBinding> extends RxAppCompatActivity {
 
     protected V mBinding;
     protected AppCompatActivity mActivity;
@@ -50,6 +52,7 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends AppCompatA
 
     /**
      * 初始化MVP
+     *
      * @param savedInstanceState
      */
     protected void initMvp(@Nullable Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package com.wonly.lib_base.base;
+package com.wonly.lib_base.mvp;
 
 import com.orhanobut.logger.Logger;
 import com.wonly.lib_base.utils.ObjectUtils;

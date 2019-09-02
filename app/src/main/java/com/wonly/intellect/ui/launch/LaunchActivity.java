@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import com.wonly.intellect.R;
 import com.wonly.intellect.databinding.ActivityLaunchBinding;
 import com.wonly.intellect.ui.main.MainActivity;
+import com.wonly.intellect.ui.test.TestActivity;
 import com.wonly.lib_base.base.BaseActivity;
 
 /**
@@ -28,7 +29,7 @@ public class LaunchActivity extends BaseActivity<ActivityLaunchBinding> {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                MainActivity.start(mActivity);
+                TestActivity.start(mActivity);
             }
         }, 2000);
     }

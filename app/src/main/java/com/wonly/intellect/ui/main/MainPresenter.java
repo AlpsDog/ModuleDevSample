@@ -1,6 +1,6 @@
 package com.wonly.intellect.ui.main;
 
-import com.wonly.lib_base.base.IBasePresenterImpl;
+import com.wonly.lib_base.mvp.IBasePresenterImpl;
 
 /**
  * @Project: ModuleDevSample

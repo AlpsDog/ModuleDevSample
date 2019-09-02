@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/net_request_tv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:text="Net测试"
+            android:gravity="center"
+            android:textSize="@dimen/text_16"
+            android:onClick="onNetRequestClick" />
+
+        <TextView
+            android:id="@+id/net_cache_tv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:text="Net缓存测试"
+            android:gravity="center"
+            android:onClick="onNetCacheClick"
+            android:textSize="@dimen/text_16" />
+    </LinearLayout>
+
+</layout>

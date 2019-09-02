@@ -1,7 +1,7 @@
 package com.wonly.module_user.ui.mine;
 
-import com.wonly.lib_base.base.IBasePresenter;
-import com.wonly.lib_base.base.IBaseView;
+import com.wonly.lib_base.mvp.IBasePresenter;
+import com.wonly.lib_base.mvp.IBaseView;
 
 /**
  * @Project: ModuleDevSample
