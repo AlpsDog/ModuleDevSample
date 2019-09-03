@@ -60,7 +60,6 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies["espresso-core"]
     //基础库依赖
     implementation project(path: ':lib_base')
-    implementation project(path: ':lib_res')
     implementation project(path: ':lib_common')
     annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     //模块依赖

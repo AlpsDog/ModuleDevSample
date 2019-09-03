@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -29,6 +30,7 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends RxAppCompa
         mActivity = this;
         mBinding = DataBindingUtil.setContentView(this, onLayoutResID(savedInstanceState));
         if (useEventBus()) EventBus.getDefault().register(this);
+        if (useImmersionBar()) initImmersionBar();
         initExtra(savedInstanceState);
         initMvp(savedInstanceState);
         initView(savedInstanceState);
@@ -49,6 +51,15 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends RxAppCompa
      * @return
      */
     protected abstract int onLayoutResID(@Nullable Bundle savedInstanceState);
+
+    /**
+     * 初始化沉浸式
+     * Init immersion bar.
+     */
+    protected void initImmersionBar() {
+        //设置共同沉浸式样式
+        ImmersionBar.with(this).statusBarDarkFont(true).init();
+    }
 
     /**
      * 初始化MVP
@@ -96,6 +107,15 @@ public abstract class BaseActivity<V extends ViewDataBinding> extends RxAppCompa
      */
     protected boolean useEventBus() {
         return false;
+    }
+
+    /**
+     * 使用沉浸式
+     *
+     * @return
+     */
+    protected boolean useImmersionBar() {
+        return true;
     }
 
 }

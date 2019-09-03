@@ -7,9 +7,8 @@ import android.support.annotation.Nullable;
 
 import com.wonly.intellect.R;
 import com.wonly.intellect.databinding.ActivityLaunchBinding;
-import com.wonly.intellect.ui.main.MainActivity;
 import com.wonly.intellect.ui.test.TestActivity;
-import com.wonly.lib_base.base.BaseActivity;
+import com.wonly.lib_base.mvp.BaseMVPActivity;
 
 /**
  * @Author: HSL
@@ -17,11 +16,16 @@ import com.wonly.lib_base.base.BaseActivity;
  * @E-mail: xxx@163.com
  * @Description: 启动页~
  */
-public class LaunchActivity extends BaseActivity<ActivityLaunchBinding> {
+public class LaunchActivity extends BaseMVPActivity<ActivityLaunchBinding, LaunchPresenter> {
 
     @Override
     protected int onLayoutResID(@Nullable Bundle savedInstanceState) {
         return R.layout.activity_launch;
+    }
+
+    @Override
+    protected LaunchPresenter onCreatePresenter() {
+        return new LaunchPresenter();
     }
 
     @Override
@@ -38,4 +42,5 @@ public class LaunchActivity extends BaseActivity<ActivityLaunchBinding> {
     protected void initData(Bundle savedInstanceState) {
 
     }
+
 }

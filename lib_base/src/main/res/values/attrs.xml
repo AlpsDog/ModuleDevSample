@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--通用Bar-->
+    <declare-styleable name="HeadBar">
+        <attr name="centerTitle" format="string" />
+        <attr name="centerTitle_color" format="color" />
+        <attr name="centerTitle_size" format="dimension" />
+        <attr name="rightTitle" format="string" />
+        <attr name="rightTitle_color" format="color" />
+        <attr name="rightTitle_size" format="dimension" />
+        <attr name="rightImage" format="reference" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+
+    <!--启动页面Theme-->
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/layer_splash_bg</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <!--引导页Theme-->
+    <style name="GuideTheme" parent="AppTheme">
+        <!--Customize your theme here.-->
+    </style>
+
+</resources>

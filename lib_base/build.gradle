@@ -62,4 +62,16 @@ dependencies {
     //glide
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    //沉浸式
+    api rootProject.ext.dependencies["immersionbar"]
+    //popup
+    api rootProject.ext.dependencies["BasePopup"]
+    //通用适配器
+    api rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
+    //刷新
+    api rootProject.ext.dependencies["SmartRefreshLayout"]
+    api rootProject.ext.dependencies["SmartRefreshHeader"]
+    //侧滑RV
+    api rootProject.ext.dependencies["SwipeRecyclerView"]
+
 }
