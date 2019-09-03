@@ -1,5 +1,6 @@
 package com.wonly.lib_base.net;
 
+import com.orhanobut.logger.Logger;
 import com.wonly.lib_base.BuildConfig;
 import com.wonly.lib_base.application.BaseApplication;
 import com.wonly.lib_base.net.cert.TrustAllCerts;
@@ -19,8 +20,6 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 
-import io.rx_cache2.internal.RxCache;
-import io.victoralbertos.jolyglot.GsonSpeaker;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -40,8 +39,6 @@ public class RetrofitManager {
     private HashMap<String, Object> mRetrofitService = new HashMap<>();
     // Retrofit实例
     private HashMap<String, Retrofit> mRetrofit = new HashMap<>();
-    // cacheService
-    private HashMap<String, Object> mCache = new HashMap<>();
 
     private RetrofitManager() {
     }
@@ -72,6 +69,7 @@ public class RetrofitManager {
                 }
             }
         }
+        Logger.t("retrofit").d(mRetrofitService + "\n" + mRetrofit);
         return retrofitService;
     }
 
@@ -92,37 +90,11 @@ public class RetrofitManager {
                             .addConverterFactory(GsonConverterFactory.create())
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                             .build();
-                    mRetrofitService.put(baseUrl, retrofit);
+                    mRetrofit.put(baseUrl, retrofit);
                 }
             }
         }
         return retrofit;
-    }
-
-    /**
-     * 根据传入的 Class 获取对应的 RxCache service
-     *
-     * @param cache
-     * @param <T>
-     * @return
-     */
-    public <T> T obtainCacheService(Class<T> cache) {
-        T cacheService = (T) mCache.get(cache.getCanonicalName());
-        if (cacheService == null) {
-            synchronized (RetrofitManager.class) {
-                if (cacheService == null) {
-                    cacheService = createCache().using(cache);
-                    mCache.put(cache.getCanonicalName(), cacheService);
-                }
-            }
-        }
-        return cacheService;
-    }
-
-    private RxCache createCache() {
-        RxCache rxCache = new RxCache.Builder()
-                .persistence(BaseApplication.getInstance().getCacheDir(), new GsonSpeaker());
-        return rxCache;
     }
 
     /**

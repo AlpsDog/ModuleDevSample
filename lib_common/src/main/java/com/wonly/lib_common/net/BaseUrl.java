@@ -11,5 +11,5 @@ package com.wonly.lib_common.net;
 public interface BaseUrl {
 
     String WRONLY = "https://www.wanandroid.com";
-    String JUHE = "";
+    String WEATHER = "http://www.weather.com.cn/";
 }

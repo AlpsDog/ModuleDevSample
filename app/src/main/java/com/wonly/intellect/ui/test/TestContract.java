@@ -1,5 +1,6 @@
 package com.wonly.intellect.ui.test;
 
+import com.wonly.intellect.bean.WeatherInfo;
 import com.wonly.lib_base.mvp.IBasePresenter;
 import com.wonly.lib_base.mvp.IBaseView;
 

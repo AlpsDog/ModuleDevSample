@@ -39,7 +39,8 @@ public abstract class BaseSubscriber<T extends BaseBean> extends ResourceSubscri
     /**
      * 错误的回调
      */
-    protected void onError(T t) {
+    protected void onFail(T t) {
+        //根据需要重写
     }
 
     @SuppressLint("MissingPermission")
@@ -47,9 +48,11 @@ public abstract class BaseSubscriber<T extends BaseBean> extends ResourceSubscri
     protected void onStart() {
         super.onStart();
         if (bShowLoading) mView.showLoading();
-        if (!NetworkUtils.isAvailableByPing()) {
+        //网络不可用时，直接阻断
+        if (!NetworkUtils.isConnected()) {
             mView.showMsg("当前网络不可用，请检查网络设置");
-            onComplete();
+            if (!isDisposed()) dispose();
+            if (bShowLoading) mView.hideLoading();
         }
     }
 
@@ -61,7 +64,7 @@ public abstract class BaseSubscriber<T extends BaseBean> extends ResourceSubscri
         } else if (t.getErrorCode() == HttpStatus.TOKEN_INVALID) {
             // TODO 处理 token 过期
         } else {
-            onError(t);
+            onFail(t);
             if (!t.getErrorMsg().isEmpty()) {
                 mView.showMsg(t.getErrorMsg());
             }

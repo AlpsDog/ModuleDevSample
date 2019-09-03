@@ -4,9 +4,7 @@ import com.wonly.intellect.ui.test.net.TestNet;
 import com.wonly.lib_base.base.BaseBean;
 import com.wonly.lib_base.mvp.IBasePresenterImpl;
 import com.wonly.lib_base.rx.BaseObserver;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
+import com.wonly.lib_base.rx.RxSchedulers;
 
 /**
  * @Project: ModuleDevSample
@@ -21,8 +19,7 @@ public class TestPresenter extends IBasePresenterImpl<TestContract.ITestView> im
     @Override
     public void login(String username, String password) {
         TestNet.getTestService().login(username, password)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxSchedulers.<BaseBean>applyScheduler())
                 .compose(getIView().<BaseBean>bindToLife())
                 .subscribe(new BaseObserver<BaseBean>(getIView()) {
 

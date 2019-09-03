@@ -19,4 +19,5 @@ public class TestNet {
     public static TestService getTestService() {
         return RetrofitManager.getInstance().obtainRetrofitService(BaseUrl.WRONLY, TestService.class);
     }
+
 }

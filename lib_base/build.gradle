@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
@@ -60,9 +59,6 @@ dependencies {
     //RxLifecycle
     api rootProject.ext.dependencies["rxlifecycle2"]
     api rootProject.ext.dependencies["rxlifecycle2-components"]
-    //RxCache
-    implementation rootProject.ext.dependencies["rxcache2"]
-    implementation rootProject.ext.dependencies["rxcache-jolyglot-gson"]
     //glide
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
