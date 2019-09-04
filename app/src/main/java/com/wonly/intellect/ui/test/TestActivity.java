@@ -9,6 +9,7 @@ import android.view.View;
 import com.wonly.intellect.R;
 import com.wonly.intellect.databinding.ActivityTestBinding;
 import com.wonly.lib_base.mvp.BaseMVPActivity;
+import com.wonly.lib_common.widget.DefaultDialog;
 
 /**
  * @Author: HSL
@@ -48,7 +49,13 @@ public class TestActivity extends BaseMVPActivity<ActivityTestBinding, TestPrese
     }
 
     public void onNetCacheClick(View view) {
-
+        //loading
+//        LoadingDialog dialog = new LoadingDialog(this);
+//        dialog.showDialog();
+        DefaultDialog dialog = new DefaultDialog(this);
+        dialog.setTitleText("测试标题");
+        dialog.setContentText("fdajferjkeofkepwrijfjdklfmdl;fkje0rie4");
+        dialog.show();
     }
 
     /**

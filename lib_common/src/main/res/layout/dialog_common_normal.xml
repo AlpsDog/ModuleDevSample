@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_marginRight="@dimen/dp_24"
+            android:background="@drawable/shape_normal_dialog"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:gravity="center_horizontal"
+                android:textColor="@color/color_333333"
+                android:textSize="@dimen/text_17"
+                tools:text="dialog标题" />
+
+            <TextView
+                android:id="@+id/content_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_29"
+                android:layout_marginTop="@dimen/dp_29"
+                android:layout_marginRight="@dimen/dp_29"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="@dimen/dp_4"
+                android:maxLines="3"
+                android:textColor="@color/color_333333"
+                android:textSize="@dimen/text_16"
+                tools:text="dialog内容" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="@dimen/text_29"
+                android:background="@color/dialog_split_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_51"
+                android:layout_gravity="bottom"
+                android:background="@android:color/transparent">
+
+                <TextView
+                    android:id="@+id/cancel_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="取消"
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/text_16" />
+
+                <View
+                    android:id="@+id/split_view"
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:background="@color/dialog_split_line" />
+
+                <TextView
+                    android:id="@+id/confirm_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="确认"
+                    android:textColor="#3CA36C"
+                    android:textSize="@dimen/text_16" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

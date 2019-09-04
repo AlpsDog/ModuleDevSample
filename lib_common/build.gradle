@@ -26,6 +26,10 @@ android {
         targetGenDir 'src/main/java'
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
         debug {
             buildConfigField "boolean", "LOG_DEBUG", "true"

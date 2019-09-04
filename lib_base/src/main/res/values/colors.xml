@@ -21,6 +21,7 @@
     <color name="background_content">#ff454344</color>
 
     <color name="custom_progress_background">#ff3c3a3b</color>
+    <color name="dialog_split_line">#e6e6e6</color>
 
     <color name="color_000000">#000000</color>
     <color name="color_111111">#111111</color>
@@ -232,7 +233,6 @@
     <color name="navy">#000080</color><!--海军色 -->
 
 
-
     <color name="custom_progress_green_header">#ff99cc00</color>
     <color name="custom_progress_green_progress">#ff669900</color>
     <color name="custom_progress_green_progress_half">#7f669900</color>
@@ -248,7 +248,6 @@
     <color name="custom_progress_purple_header">#ffaa66cc</color>
     <color name="custom_progress_purple_progress">#ff9933cc</color>
     <color name="custom_progress_purple_progress_half">#7f9933cc</color>
-
 
 
 </resources>

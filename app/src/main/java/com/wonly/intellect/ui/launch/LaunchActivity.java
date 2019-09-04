@@ -34,6 +34,7 @@ public class LaunchActivity extends BaseMVPActivity<ActivityLaunchBinding, Launc
             @Override
             public void run() {
                 TestActivity.start(mActivity);
+                finish();
             }
         }, 2000);
     }
