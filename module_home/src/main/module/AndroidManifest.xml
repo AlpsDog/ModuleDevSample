@@ -24,7 +24,7 @@
         android:label="@string/home_app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/defaultTheme">
+        android:theme="@style/AppTheme">
 
         <!--适配华为（huawei）刘海屏-->
         <meta-data

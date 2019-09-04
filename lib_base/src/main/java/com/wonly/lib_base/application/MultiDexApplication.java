@@ -2,6 +2,7 @@ package com.wonly.lib_base.application;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDex;
 
 /**
  * @Author: HSL
@@ -14,6 +15,6 @@ public class MultiDexApplication extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        // TODO: 2019/8/20 初始化 MultiDex
+        MultiDex.install(this);
     }
 }

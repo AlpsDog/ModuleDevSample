@@ -79,6 +79,7 @@ ext {
             "rxcache2"                     : "com.github.VictorAlbertos.RxCache:runtime:1.8.3-2.x",
             "rxpermissions2"               : "com.github.tbruyelle:rxpermissions:0.10.2",
             "rxerrorhandler2"              : "me.jessyan:rxerrorhandler:2.1.1",
+            "rxbinding3"                   : "com.jakewharton.rxbinding3:rxbinding:3.0.0",
 
             //tools
             "dagger2"                      : "com.google.dagger:dagger:${version["dagger2SdkVersion"]}",

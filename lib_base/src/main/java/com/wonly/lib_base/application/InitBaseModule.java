@@ -30,9 +30,9 @@ public class InitBaseModule implements IInitModuleInApplication {
      */
     @Override
     public void initModule(Application application) {
+        Logger.d("InitBaseModule：" + application);
         initARouter(application);
         initLogger();
-        Logger.d("InitBaseModule：" + application);
     }
 
     /**

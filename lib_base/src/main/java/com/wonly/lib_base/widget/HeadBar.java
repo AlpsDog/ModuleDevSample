@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,9 +20,8 @@ import com.wonly.lib_base.utils.BarUtils;
  * @E-mail: xxx@163.com
  * @Description: 通用Bar~
  */
-public class HeadBar extends LinearLayout {
+public class HeadBar extends RelativeLayout {
 
-    private Context mContext;
     private RelativeLayout relBack;
     private TextView centerTitle;
     private TextView rightTitle;
@@ -47,20 +45,19 @@ public class HeadBar extends LinearLayout {
 
     public HeadBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mContext = context;
         init(context, attrs);
     }
 
     private void init(Context context, AttributeSet attrs) {
         obtainAttributes(context, attrs);
-        setOrientation(VERTICAL);
         inflate(context, R.layout.head_bar, this);
         relBack = findViewById(R.id.bar_back_rel);
         centerTitle = findViewById(R.id.bar_center_title);
         rightTitle = findViewById(R.id.bar_right_title);
         rightImage = findViewById(R.id.bar_right_image);
         //状态栏沉浸处理
-        if (mEnableImmersionBar) {
+        //非预览模式进行padding设置,避免xml中无法预览
+        if (mEnableImmersionBar && !isInEditMode()) {
             int statusBarHeight = BarUtils.getStatusBarHeight();
             setPadding(0, statusBarHeight, 0, 0);
         }
@@ -103,8 +100,10 @@ public class HeadBar extends LinearLayout {
                 relBack.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Activity activity = (Activity) mContext;
-                        activity.finish();
+                        if (getContext() instanceof Activity) {
+                            Activity activity = (Activity) getContext();
+                            activity.finish();
+                        }
                     }
                 });
             }
