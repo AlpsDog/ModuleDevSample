@@ -12,6 +12,7 @@ import com.wonly.lib_base.net.cookie.store.PersistentCookieStore;
 import com.wonly.lib_base.net.interceptor.CacheInterceptor;
 import com.wonly.lib_base.net.interceptor.CookieInterceptor;
 import com.wonly.lib_base.net.interceptor.HeaderInterceptor;
+import com.wonly.lib_base.net.interceptor.ParameterInterceptor;
 import com.wonly.lib_base.net.interceptor.log.HttpLoggingInterceptor;
 import com.wonly.lib_base.utils.SPUtils;
 
@@ -142,6 +143,7 @@ public class RetrofitManager {
                 .cookieJar(cookieJar)
                 .cache(cache) // 添加缓存
                 .addInterceptor(new HeaderInterceptor(headers))
+                .addInterceptor(new ParameterInterceptor())
                 .addInterceptor(new CacheInterceptor())
                 .sslSocketFactory(createSSLSocketFactory(), new TrustAllCerts())// 创建一个证书对象
                 .hostnameVerifier(new TrustAllHostnameVerifier()) // 校验名称,这个对象就是信任所有的主机,也就是信任所有https的请求
