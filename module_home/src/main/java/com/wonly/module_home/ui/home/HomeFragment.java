@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.wonly.lib_base.mvp.BaseMVPFragment;
+import com.wonly.lib_base.utils.SPUtils;
 import com.wonly.lib_common.router.HomePath;
 import com.wonly.module_home.R;
 import com.wonly.module_home.databinding.HomeFragmentHomeBinding;
@@ -40,7 +41,7 @@ public class HomeFragment extends BaseMVPFragment<HomeFragmentHomeBinding, HomeP
 
     @Override
     protected void initView(@Nullable Bundle savedInstanceState) {
-
+        SPUtils.getInstance().putString("hsl", "woshilinyujie");
     }
 
     @Override

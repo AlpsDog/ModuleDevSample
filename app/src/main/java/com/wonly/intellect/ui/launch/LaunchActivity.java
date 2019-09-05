@@ -9,6 +9,7 @@ import com.tbruyelle.rxpermissions2.Permission;
 import com.wonly.intellect.R;
 import com.wonly.intellect.databinding.ActivityLaunchBinding;
 import com.wonly.intellect.ui.main.MainActivity;
+import com.wonly.intellect.ui.test.TestActivity;
 import com.wonly.lib_base.mvp.BaseMVPActivity;
 import com.wonly.lib_base.permission.PermissionUtils;
 
@@ -73,6 +74,7 @@ public class LaunchActivity extends BaseMVPActivity<ActivityLaunchBinding, Launc
                     @Override
                     public void accept(Long aLong) throws Exception {
                         MainActivity.start(mActivity);
+                        finish();
                     }
                 });
     }

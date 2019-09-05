@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.wonly.intellect.R;
 import com.wonly.intellect.databinding.ActivityMainBinding;
+import com.wonly.intellect.ui.test.TestActivity;
 import com.wonly.lib_base.mvp.BaseMVPActivity;
 import com.wonly.lib_common.event.MainEvent;
 
@@ -73,7 +74,7 @@ public class MainActivity extends BaseMVPActivity<ActivityMainBinding, MainPrese
 
     @Override
     protected void initData(Bundle savedInstanceState) {
-
+        TestActivity.start(mActivity);
     }
 
     @Override

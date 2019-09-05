@@ -8,6 +8,7 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.wonly.lib_base.mvp.BaseMVPFragment;
+import com.wonly.lib_base.utils.SPUtils;
 import com.wonly.lib_common.event.MainEvent;
 import com.wonly.lib_common.router.UserPath;
 import com.wonly.lib_common.service.IHomeModuleService;

@@ -34,23 +34,13 @@ public class HeaderInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
         Request.Builder requestBuilder = request.newBuilder();
-        String domain = request.url().host();
-
-        requestBuilder.addHeader("Content-type", "application/json; charset=utf-8");
-
-        // 将 Cookie 设置在 header 中
-        String cookie = SPUtils.getInstance().getString(domain);
-        if (!TextUtils.isEmpty(domain) && !TextUtils.isEmpty(cookie)) {
-            requestBuilder.addHeader(HttpConstant.COOKIE_NAME, cookie);
-        }
-
         // 如果公共请求头不为空,则构建新的请求
         if (headers != null) {
             for (Map.Entry<String, Object> entry : headers.entrySet()) {
                 requestBuilder.addHeader(entry.getKey(), entry.getValue().toString());
             }
         }
-
+        //添加Token
         Request requestB = requestBuilder.build();
         Response.Builder responseBuilder = chain.proceed(requestB).newBuilder();
         if (!TextUtils.isEmpty(requestB.cacheControl().toString())) {

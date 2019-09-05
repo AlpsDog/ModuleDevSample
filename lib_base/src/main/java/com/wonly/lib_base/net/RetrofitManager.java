@@ -1,14 +1,19 @@
 package com.wonly.lib_base.net;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.orhanobut.logger.Logger;
 import com.wonly.lib_base.BuildConfig;
 import com.wonly.lib_base.application.BaseApplication;
 import com.wonly.lib_base.net.cert.TrustAllCerts;
 import com.wonly.lib_base.net.cert.TrustAllHostnameVerifier;
+import com.wonly.lib_base.net.cookie.CookieJarImpl;
+import com.wonly.lib_base.net.cookie.store.PersistentCookieStore;
 import com.wonly.lib_base.net.interceptor.CacheInterceptor;
 import com.wonly.lib_base.net.interceptor.CookieInterceptor;
 import com.wonly.lib_base.net.interceptor.HeaderInterceptor;
 import com.wonly.lib_base.net.interceptor.log.HttpLoggingInterceptor;
+import com.wonly.lib_base.utils.SPUtils;
 
 import java.io.File;
 import java.security.SecureRandom;
@@ -39,6 +44,16 @@ public class RetrofitManager {
     private HashMap<String, Object> mRetrofitService = new HashMap<>();
     // Retrofit实例
     private HashMap<String, Retrofit> mRetrofit = new HashMap<>();
+    //gson
+    private static final Gson GSON;
+
+    static {
+        //当使用GsonBuilder方式时属性为空的时候输出来的json字符串是有键值key的,显示形式是"key":null，
+        //而直接new出来的就没有"key":null的
+        GSON = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd hh:mm:ss")
+                .create();
+    }
 
     private RetrofitManager() {
     }
@@ -87,7 +102,7 @@ public class RetrofitManager {
                     retrofit = new Retrofit.Builder()
                             .baseUrl(baseUrl)
                             .client(createOkHttpClient())
-                            .addConverterFactory(GsonConverterFactory.create())
+                            .addConverterFactory(GsonConverterFactory.create(GSON))
                             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                             .build();
                     mRetrofit.put(baseUrl, retrofit);
@@ -113,14 +128,24 @@ public class RetrofitManager {
         loggingInterceptor.setColorLevel(Level.INFO);
         loggingInterceptor.setPrintLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE);
 
+        //使用sp保持cookie，如果cookie不过期，则一直有效
+        CookieJarImpl cookieJar = new CookieJarImpl(new PersistentCookieStore(BaseApplication.getInstance()));
+        //拦截器自定义cookie处理
+        CookieInterceptor cookieInterceptor = new CookieInterceptor();
+
+        //公共头部:非中文
+        HashMap<String, Object> headers = new HashMap<>(1);
+        headers.put("os", SPUtils.getInstance().getString("hsl"));
+
+        //注意LOG拦截顺序
         OkHttpClient okHttpClient = builder
-                .addInterceptor(loggingInterceptor)
-                .addInterceptor(new HeaderInterceptor())
-                .addInterceptor(new CookieInterceptor())
+                .cookieJar(cookieJar)
+                .cache(cache) // 添加缓存
+                .addInterceptor(new HeaderInterceptor(headers))
                 .addInterceptor(new CacheInterceptor())
                 .sslSocketFactory(createSSLSocketFactory(), new TrustAllCerts())// 创建一个证书对象
                 .hostnameVerifier(new TrustAllHostnameVerifier()) // 校验名称,这个对象就是信任所有的主机,也就是信任所有https的请求
-                .cache(cache) // 添加缓存
+                .addInterceptor(loggingInterceptor)
                 .connectTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
                 .readTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
                 .writeTimeout(DEFAULT_TIME_OUT, TimeUnit.SECONDS)
